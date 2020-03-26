@@ -9,3 +9,5 @@ Italian Statistics:
 
 ![](html/timesliderchoroplet_prov_totcasi_norm.html)
 
+<p></p>
+<a href="html/timesliderchoroplet_prov_totcasi_norm.html">Time evolution choropleth</a></p>
