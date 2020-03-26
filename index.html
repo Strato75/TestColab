@@ -1,14 +1,48 @@
+<html>
 <h1 id="Worldwide and Italian statistics of Covid-19 epidemics">Covid-19_ItalyStats</h1>
 <p>Worldwide and italian diagrams are generated respectively by using the <a href="https://github.com/pcm-dpc/COVID-19">Protezione Civile dataset</a> and data taken from <a href="https://github.com/CSSEGISandData/COVID-19">2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE</a></p>
 <p>Here a preview of statistics computed by using the code in this repository:</p>
 <p>Italian Statistics:</p>
 <img src="figures/Italy_stats.png" alt="Simply Easy Learning" idth="1000" height="800">
+<p></p>
+<a href="html/timesliderchoroplet_prov_totcasi_norm.html">Time evolution choropleth</a></p>
 
-<script src="jquery.js"></script>
 <script>
-    $(function(){
-        $("#includedContent").load("html/timesliderchoroplet_prov_totcasi_norm.html");
-    });
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /*exit the function:*/
+      return;
+    }
+  }
+};
+</script>
+<body>
+
+<div w3-include-html="timesliderchoroplet_prov_totcasi_norm.html"></div>
+
+<script>
+includeHTML();
 </script>
 
-<div id="includedContent"></div>
+</body>
+</html>
